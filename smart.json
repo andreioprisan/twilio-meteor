@@ -1,0 +1,8 @@
+{
+  "name":"twilio",
+  "description": "Twilio Meteor API Bindings",
+  "homepage": "https://github.com/andreioprisan/twilio-meteor",
+  "author":"Andrei Oprisan (http://andrei.oprisan.com)",
+  "version":"1.0.0",
+  "git": "git://github.com/andreioprisan/twilio-meteor.git"
+}
