@@ -1,0 +1,19 @@
+{
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "master",
+    "commit": "1dfc7171f237a029cca74cbf25024acbf6ed5b75"
+  },
+  "dependencies": {
+    "basePackages": {
+      "twilio-meteor": {
+        "path": ""
+      }
+    },
+    "packages": {
+      "twilio-meteor": {
+        "path": ""
+      }
+    }
+  }
+}
