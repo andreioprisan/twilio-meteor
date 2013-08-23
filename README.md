@@ -62,6 +62,135 @@ To get started, replace ACCOUNT_SID, AUTH_TOKEN with your Twilio credentials and
 
 ```
 
+####Here are a few examples of how to process incoming Voice calls and SMS messages via the Meteor router.
+
+This code is from a production site, feedvenue.com
+
+twilioRawIn is a collection to store the raw input for later.
+
+```javascript
+
+Meteor.Router.add('/api/twiml/voice', 'POST', function() {
+	var rawIn = this.request.body;
+	console.log(rawIn);
+	if (Object.prototype.toString.call(rawIn) == "[object Object]") {
+		twilioRawIn.insert(rawIn);
+	}
+
+	var question = {};
+	if (rawIn.Body) {
+		question.inputQuestion = rawIn.Body;
+		question.source = "sms";
+	} else if (rawIn.TranscriptionText) {
+		question.inputQuestion = rawIn.TranscriptionText;
+		question.source = "voicemail";
+	} else {
+		return;
+	}
+	question.inputName = rawIn.From;
+	    		
+	var toOrig = rawIn.To;
+	toOrig = toOrig.replace(/\+1/g, "");
+	var toPretty = '('+toOrig.substr(0,3)+') '+toOrig.substr(3,3)+'-'+toOrig.substr(6,10);
+	var eventDetails = Events.findOne({phone: toPretty});
+
+	if (_.size(eventDetails) == 0) {
+		return;
+	} else {
+		question.slug = eventDetails.slug;
+	}
+
+    Meteor.call('questionCreate', question, function(error, res) {
+
+    });
+
+	var xml = '<Response><Say voice="man">Please speak your question after the tone. You may hang up when you\'re finished</Say><Record maxLength="180" transcribe="true" transcribeCallback="https://feedvenue.com/api/twiml/transcribe" /></Response>';
+    return [200, {"Content-Type": "text/xml"}, xml];
+});
+
+
+```
+
+```javascript
+
+Meteor.Router.add('/api/twiml/sms', 'POST', function() {
+	var rawIn = this.request.body;
+	if (Object.prototype.toString.call(rawIn) == "[object Object]") {
+		twilioRawIn.insert(rawIn);
+	}
+
+	var question = {};
+	if (rawIn.Body) {
+		question.inputQuestion = rawIn.Body;
+		question.source = "sms";
+	} else if (rawIn.TranscriptionText) {
+		question.inputQuestion = rawIn.TranscriptionText;
+		question.source = "voicemail";
+	} else {
+		return;
+	}
+	question.inputName = rawIn.From;
+	    		
+	var toOrig = rawIn.To;
+	toOrig = toOrig.replace(/\+1/g, "");
+	var toPretty = '('+toOrig.substr(0,3)+') '+toOrig.substr(3,3)+'-'+toOrig.substr(6,10);
+	var eventDetails = Events.findOne({phone: toPretty});
+
+	if (_.size(eventDetails) == 0) {
+		return;
+	} else {
+		question.slug = eventDetails.slug;
+	}
+
+    Meteor.call('questionCreate', question, function(error, res) {
+
+    });
+
+	var xml = '<Response><Sms>Thank you for submitting your question!</Sms></Response>';
+    return [200, {"Content-Type": "text/xml"}, xml];
+});
+
+```
+
+```javascript
+
+Meteor.Router.add('/api/twiml/transcribe', 'POST', function() {
+	var rawIn = this.request.body;
+	if (Object.prototype.toString.call(rawIn) == "[object Object]") {
+		twilioRawIn.insert(rawIn);
+	}
+
+	var question = {};
+	if (rawIn.Body) {
+		question.inputQuestion = rawIn.Body;
+		question.source = "sms";
+	} else if (rawIn.TranscriptionText) {
+		question.inputQuestion = rawIn.TranscriptionText;
+		question.source = "voicemail";
+	} else {
+		return;
+	}
+	question.inputName = rawIn.From;
+	    		
+	var toOrig = rawIn.To;
+	toOrig = toOrig.replace(/\+1/g, "");
+	var toPretty = '('+toOrig.substr(0,3)+') '+toOrig.substr(3,3)+'-'+toOrig.substr(6,10);
+	var eventDetails = Events.findOne({phone: toPretty});
+
+	if (_.size(eventDetails) == 0) {
+		return;
+	} else {
+		question.slug = eventDetails.slug;
+	}
+
+    Meteor.call('questionCreate', question, function(error, res) {
+
+    });
+
+    return [200, {"Content-Type": "application/json"}, "ok"];
+});
+
+```
 
 For more examples, check out the official Twilio node.js quickstart section: http://twilio.github.io/twilio-node/#quickstart
 
