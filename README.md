@@ -3,7 +3,7 @@ Twilio Meteor API bindings
 
 This smart package exposes the official Twilio Meteor API from the node.js npm package: http://twilio.github.io/twilio-node/
 
-This uses version 1.1.0 of the Twilio node.js package and the new meteor 0.6.0 npm bindings.
+This uses version 1.1.4 of the Twilio node.js package and the new meteor 0.6.0 npm bindings.
 
 To get started, replace ACCOUNT_SID, AUTH_TOKEN with your Twilio credentials and use some of the examples below:
 
