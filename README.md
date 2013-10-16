@@ -9,8 +9,10 @@ This uses version 1.1.4 of the Twilio node.js package and the new meteor 0.6.5.1
 
 #### To Install
 
+    mrt add moment
     mrt add twilio-meteor
 
+moment is required for Twilio date conversion internals.
 
 To get started, replace ACCOUNT_SID, AUTH_TOKEN with your Twilio credentials and use some of the examples below:
 
