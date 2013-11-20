@@ -5,7 +5,7 @@ This smart package exposes the official Twilio Meteor API from the node.js npm p
 
 This Meteor package is licensed under the MIT license.
 
-This uses version 1.1.4 of the Twilio node.js package and the new meteor 0.6.5.1 npm bindings.
+This uses version 1.4.0 of the Twilio node.js package and the new meteor 0.6.5.1+ npm bindings.
 
 #### To Install
 
