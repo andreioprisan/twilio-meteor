@@ -2,7 +2,7 @@ Package.describe({
   summary: "Twilio API Wrapper for Meteor"
 });
 
-Npm.depends({ "twilio": "1.4.0" });
+Npm.depends({ "twilio": "1.6.0" });
 
 Package.on_use(function(api) {
   if (api.export) api.export('Twilio', 'server');	
