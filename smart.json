@@ -3,6 +3,6 @@
   "description": "Twilio Meteor API Bindings",
   "homepage": "https://github.com/andreioprisan/twilio-meteor",
   "author": "Andrei Oprisan (http://andrei.oprisan.com)",
-  "version": "1.4.0",
+  "version": "1.6.0",
   "git": "https://github.com/andreioprisan/twilio-meteor.git"
 }
