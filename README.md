@@ -16,7 +16,7 @@ moment is required for Twilio date conversion internals.
 
 To get started, replace ACCOUNT_SID, AUTH_TOKEN with your Twilio credentials and use some of the examples below:
 
-####Send an SMS text message
+#### Send an SMS text message
 
 ```javascript
 
@@ -38,7 +38,7 @@ To get started, replace ACCOUNT_SID, AUTH_TOKEN with your Twilio credentials and
 
 ```
 
-####Place a phone call, and respond with TwiML instructions from the given URL
+#### Place a phone call, and respond with TwiML instructions from the given URL
 
 ```javascript
   twilio = Twilio(ACCOUNT_SID, AUTH_TOKEN);
@@ -54,7 +54,7 @@ To get started, replace ACCOUNT_SID, AUTH_TOKEN with your Twilio credentials and
 
 ```
   
-####Loop through a list of SMS messages sent from a given number
+#### Loop through a list of SMS messages sent from a given number
 
 ```javascript
 
@@ -71,7 +71,7 @@ To get started, replace ACCOUNT_SID, AUTH_TOKEN with your Twilio credentials and
 
 ```
 
-####Here are a few examples of how to process incoming Voice calls and SMS messages via the Meteor router.
+#### Here are a few examples of how to process incoming Voice calls and SMS messages via the Meteor router.
 
 This code is from a production site, feedvenue.com
 
